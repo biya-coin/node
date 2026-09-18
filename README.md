@@ -30,18 +30,13 @@ For testing, configure your chain as follows:
   echo '{"chain": "Mainnet"}' > ~/visor.json
   ```
 
-### Download the Visor Binary
+### Download the byb-visor Binary
 
 The visor binary spawns and manages the child node process.
 
-- **Testnet**:
-  ```bash
-  curl https://binaries.hyperliquid-testnet.xyz/Testnet/hl-visor > ~/hl-visor && chmod a+x ~/hl-visor
-  ```
-- **Mainnet**:
-  ```bash
-  curl https://binaries.hyperliquid.xyz/Mainnet/hl-visor > ~/hl-visor && chmod a+x ~/hl-visor
-  ```
+```bash
+curl -fL https://github.com/biya-coin/node/releases/download/byb-visor/byb-visor -o ~/byb-visor && chmod a+x ~/byb-visor
+```
 
 ---
 
@@ -55,20 +50,14 @@ Binaries are signed for extra security. The public key is found at `pub_key.asc`
    gpg --import pub_key.asc
    ```
 
-2. **Verify the Binary:**
+2. **Verify the byb-visor Binary:**
    Signatures are located at `{binary}.asc`.
-   - **Testnet**:
-     ```bash
-     curl https://binaries.hyperliquid-testnet.xyz/Testnet/hl-visor.asc > hl-visor.asc
-     gpg --verify hl-visor.asc hl-visor
-     ```
-   - **Mainnet**:
-     ```bash
-     curl https://binaries.hyperliquid.xyz/Mainnet/hl-visor.asc > hl-visor.asc
-     gpg --verify hl-visor.asc hl-visor
-     ```
+   ```bash
+   curl -fL https://github.com/biya-coin/node/releases/download/byb-visor/byb-visor.asc > ~/byb-visor.asc
+   gpg --verify ~/byb-visor.asc ~/byb-visor
+   ```
 
-`hl-visor` will also verify `hl-node` automatically and will not upgrade on verification failure. **Important:** The public key must be imported as shown above. Optionally, sign the key using `gpg --sign-key` to avoid warnings when verifying its signatures.
+Current `byb-visor` does not yet verify `byb-node.asc` automatically; it will download and start `byb-node` without signature verification. **Important:** The public key must be imported as shown above. Optionally, sign the key using `gpg --sign-key` to avoid warnings when verifying its signatures.
 
 ---
 
